@@ -11,16 +11,22 @@ gem 'devise'
 gem 'figaro'
 gem 'haml-rails'
 gem 'mongoid'
+gem 'streama'
+gem 'mongoid_socializer_actions'
+gem 'mongoid_taggable_with_context'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
   gem 'html2haml'
   gem 'quiet_assets'
 end
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
 end
+
 group :test do
   gem 'capybara'
   gem 'cucumber-rails', :require=>false
