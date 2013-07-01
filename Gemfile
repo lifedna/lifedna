@@ -14,6 +14,9 @@ gem 'mongoid'
 gem 'streama'
 gem 'mongoid_socializer_actions'
 gem 'mongoid_taggable_with_context'
+gem 'apotomo', '~> 1.2.3'
+gem 'nested_form'
+gem 'cancan'
 
 group :development do
   gem 'better_errors'
