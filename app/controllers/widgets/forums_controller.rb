@@ -3,9 +3,9 @@ class Widgets::ForumsController < ApplicationController
   def update
   	@widget = Widget.find params[:id]
 
-  	if @widget.update_attributes(params[@widget.class.to_s.camelize(:lower).to_sym])	
+  	if @widget.update_attributes(params[:forum])	
   	  flash[:notice] = "Community has been updated."	
-  	  redirect_to community_page_path(@widget.community, @widget.page)
+  	  redirect_to community_section_path(@widget.community, @widget.section)
   	end	
   end	
 end

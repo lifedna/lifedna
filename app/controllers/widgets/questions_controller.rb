@@ -14,7 +14,7 @@ class Widgets::QuestionsController < ApplicationController
     if @question.save 
       flash[:notice] = "Question saved successfully."
       # render :action => :show
-      redirect_to community_page_path(@qa.community, @qa.page)
+      redirect_to community_section_path(@qa.community, @qa.section)
     else
       flash[:notice] = "Failed to save question."    
       render :action => :new

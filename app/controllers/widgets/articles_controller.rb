@@ -11,7 +11,7 @@ class Widgets::ArticlesController < ApplicationController
     if @article.save 
       flash[:notice] = "Article saved successfully."
       # render :action => :show
-      redirect_to community_page_path(@column.community, @column.page)
+      redirect_to community_section_path(@column.community, @column.section)
     else
       flash[:notice] = "Failed to save article."    
       render :action => :new
@@ -26,7 +26,7 @@ class Widgets::ArticlesController < ApplicationController
 
     if @widget.update_attributes(params[@widget.class.to_s.camelize(:lower).to_sym])  
       flash[:notice] = "Community has been updated."  
-      redirect_to community_page_path(@widget.community, @widget.page)
+      redirect_to community_section_path(@widget.community, @widget.section)
     else
       flash[:notice] = "Failed to save article."    
     end

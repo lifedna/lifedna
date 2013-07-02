@@ -10,7 +10,7 @@ class Widgets::TopicsController < ApplicationController
   	if @topic.save 
   	  flash[:notice] = "Topic saved successfully."
   	  # render :action => :show
-      redirect_to community_page_path(@forum.community, @forum.page)
+      redirect_to community_section_path(@forum.community, @forum.section)
   	else
   	  flash[:notice] = "Failed to save topic."	  
   	  render :action => :new
@@ -25,7 +25,7 @@ class Widgets::TopicsController < ApplicationController
 
   	if @widget.update_attributes(params[@widget.class.to_s.camelize(:lower).to_sym])	
   	  flash[:notice] = "Project has been updated."	
-  	  redirect_to community_page_path(@widget.community, @widget.page)
+  	  redirect_to community_section_path(@widget.community, @widget.section)
   	else
   	  flash[:notice] = "Failed to save topic."	  
   	end	
