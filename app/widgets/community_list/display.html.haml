@@ -1,0 +1,6 @@
+= widget_div do
+  %h3 Communities
+  %ul
+    - @communities.each do |c|
+      %li
+        Community: #{link_to c.name, c}

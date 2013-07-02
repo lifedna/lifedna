@@ -1,0 +1,9 @@
+- @blog = Blog.new
+
+%h3 我的健康
+= link_to '写日记', new_blog_path
+%ul
+  - current_user.blogs.each do |blog|
+    %li
+      = link_to blog.title, blog_path(blog)
+

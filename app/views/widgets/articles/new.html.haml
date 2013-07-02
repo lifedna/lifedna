@@ -1,0 +1,12 @@
+%h3 新加文章
+= form_for @article, :url => {:action => "create"}  do |f|
+  %p
+    = f.text_field :title
+  %p
+    = f.text_area :body, :size => "60x12"
+  %p
+    = f.hidden_field :community_id, :value => @column.community.id
+  %p
+    = f.hidden_field :column_id, :value => @column.id    
+  %p  
+    = f.submit "更新"

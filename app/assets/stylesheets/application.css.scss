@@ -35,3 +35,10 @@ ul.nav li {
   background-color: #FCC;
   border: solid 1px #C66;
 }
+
+li.sortable-placeholder {
+  border: 1px dashed #CCC;
+  background: none;
+  height: 120px;
+  width: 500px
+}

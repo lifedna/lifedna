@@ -2,6 +2,18 @@
 %ul.nav
   - if user_signed_in?
     %li
+      = link_to '动态', update_url
+    %li
+      = link_to '精选', features_url  
+    %li
+      = link_to '社群', communities_url   
+    %li
+      = link_to '我的健康', mine_url  
+  - else
+    %li
+      = link_to '社群', communities_url     
+  - if user_signed_in?
+    %li
       = link_to 'Logout', destroy_user_session_path, :method=>'delete'
   - else
     %li

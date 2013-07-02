@@ -1,0 +1,21 @@
+%h3 Features
+%ul.nav
+  %li 
+    = link_to '所有', features_path
+  %li 
+    = link_to '健康知识', features_path(:category => '健康知识')
+  %li 
+    = link_to '就医指南', features_path(:category => '就医指南')
+  %li 
+    = link_to '治疗交流', features_path(:category => '治疗交流')
+  %li 
+    = link_to '护理园地', features_path(:category => '护理园地') 
+  %li 
+    = link_to '用药常识', features_path(:category => '用药常识')          
+
+%ul
+- @blogs.each do |b|
+  %li
+    #{b.title}
+    %br
+    %small #{time_ago_in_words(b.created_at).capitalize}前 #{b.category}

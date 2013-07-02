@@ -7,6 +7,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'devise'
 gem 'figaro'
 gem 'haml-rails'
@@ -15,6 +16,7 @@ gem 'streama'
 gem 'mongoid_socializer_actions'
 gem 'mongoid_taggable_with_context'
 gem 'apotomo', '~> 1.2.3'
+gem 'simple_form'
 gem 'nested_form'
 gem 'cancan'
 
