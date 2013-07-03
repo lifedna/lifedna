@@ -3,8 +3,17 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new
     can :update, Community do |community|
-        community.try(:owner).id == user.id
+      community.try(:owner).id == user.id
+    end    
+
+    can :participate, Community do |community|
+      unless community.users.empty?
+        community.users.include?(user)
+      else
+        return false
+      end  
     end    
     # Define abilities for the passed in user here. For example:
     #

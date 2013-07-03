@@ -3,4 +3,8 @@
   %ul
     - @communities.each do |c|
       %li
-        #{link_to c.name, c}
+        #{link_to c.name, c}  
+        - if !c.users.empty? && c.users.include?(current_user)
+          #{link_to('退出', leave_community_path(c))} 
+        - else
+          #{link_to('加入', join_community_path(c))}   

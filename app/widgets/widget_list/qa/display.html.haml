@@ -4,7 +4,7 @@
     = @qa.name
     - if can? :update, @qa.community
       = link_to 'delete', url_for_event(:delete_widget, :id => @qa.section.id, :widget_id => @qa.id), :confirm => 'Are you sure?', :method => 'delete', :remote => true
-      = link_to '发言', new_community_qa_question_path(@qa.community, @qa)
+      / = link_to '发言', new_community_qa_question_path(@qa.community, @qa)
       %a{:href => "#", :id => "#{@qa.id}-settings"} settings
       
   .widget-settings{"data-id" => "#{@qa.id}", :style => "width:500px; background:#f4f4ec; padding:20px; margin-bottom:10px;"}
@@ -13,27 +13,27 @@
         = f.text_field :name
       %p  
         = f.submit "保存"
-
-  %div{:id => dom_id(@qa), :style => "min-height:100px; width:500px; background:#f4f4ec; padding:20px;"}
-    = form_tag new_community_qa_question_path(@qa.community, @qa), :method => :get do
-      = text_field_tag :title
-      %p  
-        = submit_tag "提个问"    
-    %br
-    %table
-      %tr
-        %th 问题
-        %th 作者
-        %th 回应
-        %th 浏览
-        %th 最后更新
-      - @qa.questions.each do |q|
-        %tr 
-          %td #{q.title}
-          %td 
-          %td 
-          %td 
-          %td #{q.created_at.strftime("%H:%M %Y-%m-%d ")}       
+  - if (can? :update, @qa.community) || (can? :participate, @qa.community)         
+    %div{:id => dom_id(@qa), :style => "min-height:100px; width:500px; background:#f4f4ec; padding:20px;"}
+      = form_tag new_community_qa_question_path(@qa.community, @qa), :method => :get do
+        = text_field_tag :title
+        %p  
+          = submit_tag "提个问"    
+      %br
+      %table
+        %tr
+          %th 问题
+          %th 作者
+          %th 回应
+          %th 浏览
+          %th 最后更新
+        - @qa.questions.each do |q|
+          %tr 
+            %td #{q.title}
+            %td 
+            %td 
+            %td 
+            %td #{q.created_at.strftime("%H:%M %Y-%m-%d ")}       
 
 :javascript
   $(document).ready(function(){

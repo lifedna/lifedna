@@ -9,6 +9,7 @@ class NewCommunityWidget < AuthorizableWidget
   	# community = Community.create(evt[:community])
   	community = Community.new(evt[:community])
   	community.owner = current_user
+    community.users << current_user
   	community.save!
   	trigger :newCommunity, :task => community
   	replace :view => :display

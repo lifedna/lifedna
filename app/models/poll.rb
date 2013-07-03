@@ -17,5 +17,6 @@ class Poll
   end
   accepts_nested_attributes_for :options, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
   belongs_to :poll_set
+  belongs_to :community
 
 end

@@ -14,7 +14,11 @@ class Community
   has_many :widgets
   has_many :articles
   has_many :questions  
+  has_many :polls
   has_many :topics
   has_many :posts 
 
+  def activities
+    Activity.where(target_object:{"id" => self.id, "type"=>"Community"})
+  end
 end

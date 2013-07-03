@@ -1,4 +1,4 @@
-class CommunityListWidget < Apotomo::Widget
+class CommunityListWidget < AuthorizableWidget
   responds_to_event :newCommunity, :with => :process_add, :passing => :root	
 
   def display

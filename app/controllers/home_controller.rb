@@ -6,14 +6,26 @@ class HomeController < ApplicationController
   end
 
   def update
+    if user_signed_in?
+      @activities ||= []
+      current_user.communities.each do |community|
+        @activities.concat(community.activities)
+      end 
+      @activities.sort_by!{|i| i.created_at}.reverse! unless @activities.empty?
+    end
   end
   
   def features
+    @items ||= []
     if params[:category]
       @blogs = Blog.where(category: params[:category])
+      @articles = Article.where(category: params[:category])
     else
       @blogs = Blog.all
+      @articles = Article.all
     end  
+    @items.concat(@blogs)
+    @items.concat(@articles)
   end
 
   def mine

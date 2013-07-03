@@ -6,6 +6,8 @@
   %p
     = f.hidden_field :poll_set_id, :value => @poll_set.id  
   %p
+    = f.hidden_field :community_id, :value => @poll_set.community.id  
+  %p
     = f.fields_for :options do |option|
       = option.label "选项"
       = option.text_field :name  

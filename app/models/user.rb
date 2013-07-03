@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Commenter
+  include Streama::Actor
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -51,4 +52,8 @@ class User
 
   has_and_belongs_to_many :communities
   has_many :blogs
+
+  def followers
+    User.excludes(:id => self.id).all
+  end
 end

@@ -14,8 +14,8 @@
     = link_to '用药常识', features_path(:category => '用药常识')          
 
 %ul
-- @blogs.each do |b|
+- @items.each do |item|
   %li
-    #{b.title}
+    #{item.title}
     %br
-    %small #{time_ago_in_words(b.created_at).capitalize}前 #{b.category}
+    %small #{time_ago_in_words(item.created_at).capitalize}前 #{item.category}

@@ -5,7 +5,7 @@ Lifedna::Application.routes.draw do
   match '/mine' => 'home#mine', :as => :mine	
 
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'home#update'
   end
   root :to => "home#index"
   devise_for :users
@@ -35,5 +35,7 @@ Lifedna::Application.routes.draw do
     end
 
     get 'admin', :on => :member
+    get 'join', :on => :member
+    get 'leave', :on => :member
   end
 end

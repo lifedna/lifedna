@@ -10,7 +10,7 @@ class Widgets::ArticlesController < ApplicationController
     @article = Article.new(params[:article])
     if @article.save 
       flash[:notice] = "Article saved successfully."
-      # render :action => :show
+      current_user.publish_activity(:new_article, :object => @article, :target_object => @column.community)
       redirect_to community_section_path(@column.community, @column.section)
     else
       flash[:notice] = "Failed to save article."    
@@ -19,6 +19,7 @@ class Widgets::ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find params[:id]
   end
 
   def update
