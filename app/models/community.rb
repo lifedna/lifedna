@@ -21,4 +21,8 @@ class Community
   def activities
     Activity.where(target_object:{"id" => self.id, "type"=>"Community"})
   end
+
+  def the_owner
+    User.find_by(id: self.owner.id)
+  end
 end

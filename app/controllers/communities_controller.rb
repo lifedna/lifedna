@@ -14,7 +14,11 @@ class CommunitiesController < ApplicationController
   	@community = Community.find(params[:id])
   	@section = @community.sections.first
   	if @section.nil?
-  	  redirect_to admin_community_url
+  	  if current_user == @community.the_owner
+        redirect_to admin_community_url
+      else
+        render
+      end
   	else
       redirect_to community_section_url(@community, @section)
   	end

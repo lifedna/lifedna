@@ -5,7 +5,8 @@ class Ability
   def initialize(user)
     user ||= User.new
     can :update, Community do |community|
-      community.try(:owner).id == user.id
+      # community.try(:owner).id == user.id
+      community.the_owner == user
     end    
 
     can :participate, Community do |community|
