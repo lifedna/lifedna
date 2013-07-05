@@ -1,7 +1,7 @@
 class AuthorizableWidget < Apotomo::Widget
 
   include Devise::Controllers::Helpers 
-  helper_method :current_user
+  helper_method :current_user, :user_signed_in?
 
   def can?(action, object)
     current_ability.can? action, object

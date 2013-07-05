@@ -1,7 +1,6 @@
 Lifedna::Application.routes.draw do
   match '/update' => 'home#update', :as => :update
   match '/features' => 'home#features', :as => :features
-  # match '/communities' => 'home#communities', :as => :communities
   match '/mine' => 'home#mine', :as => :mine	
 
   authenticated :user do
@@ -37,5 +36,13 @@ Lifedna::Application.routes.draw do
     get 'admin', :on => :member
     get 'join', :on => :member
     get 'leave', :on => :member
+  end
+
+  resources :phrs do
+    scope :module => "phrs" do
+      resources :conditions
+      resources :symptoms
+      resources :treatments
+    end
   end
 end

@@ -3,8 +3,9 @@ class Article
   include Mongoid::Document	
   include Mongoid::Timestamps
   include Mongoid::TaggableWithContext
-
   include Mongoid::TaggableWithContext::AggregationStrategy::MapReduce
+
+  include Mongoid::Likeable
 
   taggable
 
@@ -26,4 +27,7 @@ class Article
     self.class.increment_counter :hits, id
   end
 
+  def liked?(user)
+    return self.likers.include?(user)
+  end  
 end

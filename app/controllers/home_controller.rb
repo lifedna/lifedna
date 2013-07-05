@@ -29,5 +29,13 @@ class HomeController < ApplicationController
   end
 
   def mine
+    if params[:phr]
+      @phr = Phr.find params[:phr]
+    else
+      @phr = current_user.phrs.first
+    end
+    @condition = @phr.conditions.build
+    @symptom = @phr.symptoms.build
+    @treatment = @phr.treatments.build
   end	
 end

@@ -4,8 +4,9 @@ class Blog
   include Mongoid::Timestamps
   include Mongoid::Commentable
   include Mongoid::TaggableWithContext
-
   include Mongoid::TaggableWithContext::AggregationStrategy::MapReduce
+
+  include Mongoid::Likeable
 
   taggable
 
@@ -26,4 +27,8 @@ class Blog
   def hit!
     self.class.increment_counter :hits, id
   end  	
+
+  def liked?(user)
+    return self.likers.include?(user)
+  end
 end

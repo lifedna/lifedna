@@ -1,6 +1,7 @@
 class Question 
   include Mongoid::Document	
   include Mongoid::Timestamps
+  include Mongoid::Likeable
 
   field :title, type: String
   field :body, type: String
@@ -17,4 +18,7 @@ class Question
   belongs_to :qa
   belongs_to :community
 
+  def liked?(user)
+    return self.likers.include?(user)
+  end 
 end

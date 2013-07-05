@@ -1,6 +1,7 @@
 class Topic
   include Mongoid::Document	
   include Mongoid::Timestamps
+  include Mongoid::Likeable
 
   field :title, type: String
   field :body, type: String
@@ -24,4 +25,7 @@ class Topic
     self.class.increment_counter :hits, id
   end
 
+  def liked?(user)
+    return self.likers.include?(user)
+  end 
 end
