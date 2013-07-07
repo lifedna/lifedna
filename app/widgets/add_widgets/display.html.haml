@@ -3,7 +3,7 @@
     .widget
       = render_widget :section_setting, :display, :section => @section
     .widget
-      = link_to '删除房间', [@section.community, @section], :confirm => 'Are you sure?', :method => :delete  
+      = link_to '删除房间', @section, :confirm => 'Are you sure?', :method => :delete  
     .widget
       %h4 公告栏
       %p 贴通知的地方，甚至是通缉令

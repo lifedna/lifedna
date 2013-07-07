@@ -1,5 +1,5 @@
 %h3 编辑公告栏
-= form_for @widget, :url => community_bulletin_url(@widget)  do |f|
+= form_for @widget, :url => bulletin_url(@widget)  do |f|
   %p
     = f.text_area :body, :size => "60x12"
   %p  

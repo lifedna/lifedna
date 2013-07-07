@@ -1,5 +1,6 @@
 class CommunitiesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
+  # load_and_authorize_resource
   
   has_widgets do |root|    
     root << widget(:new_community)
@@ -11,16 +12,19 @@ class CommunitiesController < ApplicationController
   end
 
   def show
-  	@community = Community.find(params[:id])
+  	# @community = Community.find(params[:id])
+    @community = current_community || not_found
   	@section = @community.sections.first
+    # redirect_to section_url(@section)
   	if @section.nil?
   	  if current_user == @community.the_owner
-        redirect_to admin_community_url
+        redirect_to admin_community_url(@community)
       else
         render
       end
   	else
-      redirect_to community_section_url(@community, @section)
+      # redirect_to community_section_url(@community, @section)
+      redirect_to section_url(@section)
   	end
   end  
 
@@ -40,5 +44,9 @@ class CommunitiesController < ApplicationController
     @community.users.delete(current_user)
     @community.save
     redirect_to :action => "index"
+  end
+
+  def not_found
+    raise ActionController::RoutingError.new('Community Not Found')
   end
 end

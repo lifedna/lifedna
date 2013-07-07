@@ -3,7 +3,7 @@
   %ul
     - @communities.each do |c|
       %li
-        #{link_to c.name, c}  
+        #{link_to c.name, root_url(:subdomain => c.subdomain)}  
         - if user_signed_in?
           - if !c.users.empty? && c.users.include?(current_user)
             #{link_to('退出', leave_community_path(c))} 

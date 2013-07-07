@@ -8,7 +8,7 @@
       %a{:href => "#", :id => "#{@qa.id}-settings"} settings
       
   .widget-settings{"data-id" => "#{@qa.id}", :style => "width:500px; background:#f4f4ec; padding:20px; margin-bottom:10px;"}
-    = form_for @qa, :url => community_qa_url(@qa.community, @qa)  do |f|
+    = form_for @qa, :url => qa_url(@qa) do |f|
       %p
         = f.text_field :name
       %p  

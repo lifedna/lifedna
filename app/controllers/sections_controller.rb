@@ -1,4 +1,5 @@
 class SectionsController < ApplicationController
+
   has_widgets do |root|
     root << widget(:section_list)
     root << widget(:section)
@@ -10,9 +11,10 @@ class SectionsController < ApplicationController
   end
 
   def create
-  	community = Community.find params[:community_id]
+  	# community = Community.find params[:community_id]
+    community = current_community
   	section = community.sections.create
-  	redirect_to community_section_path(community, section) 
+  	redirect_to section_path(section) 
   end	
 
   def destroy

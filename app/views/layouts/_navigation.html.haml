@@ -1,28 +1,28 @@
-= link_to "Lifedna", root_path, :class => 'brand'
+= link_to "Lifedna", root_url(:host => request.domain ), :class => 'brand'
 %ul.nav
   - if user_signed_in?
     %li
-      = link_to '动态', update_url
+      = link_to '动态', update_url(:host => request.domain)
     %li
-      = link_to '精选', features_url  
+      = link_to '精选', features_url(:host => request.domain)  
     %li
-      = link_to '社群', communities_url   
+      = link_to '社群', communities_url(:host => request.domain)   
     %li
-      = link_to '我的健康', mine_url  
+      = link_to '我的健康', mine_url(:host => request.domain)  
   - else
     %li
-      = link_to '社群', communities_url     
+      = link_to '社群', communities_url(:host => request.domain)     
   - if user_signed_in?
     %li
-      = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+      = link_to 'Logout', destroy_user_session_url(:host => request.domain), :method=>'delete'
   - else
     %li
-      = link_to 'Login', new_user_session_path
+      = link_to 'Login', new_user_session_url(:host => request.domain)
   - if user_signed_in?
     %li
-      = link_to 'Edit account', edit_user_registration_path
+      = link_to 'Edit account', edit_user_registration_url(:host => request.domain)
   - else
     %li
-      = link_to 'Sign up', new_user_registration_path
+      = link_to 'Sign up', new_user_registration_url(:host => request.domain)
 - if user_signed_in?
   欢迎，#{current_user.name}      

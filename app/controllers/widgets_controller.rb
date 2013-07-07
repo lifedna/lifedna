@@ -6,7 +6,7 @@ class WidgetsController < ApplicationController
 
   	if @widget.update_attributes(params[@widget.class.to_s.underscore.to_sym])	
   	  flash[:notice] = "Community has been updated."	
-  	  redirect_to community_section_path(@widget.community, @widget.section)
+  	  redirect_to section_path(@widget.section)
   	end	
   end	
 end

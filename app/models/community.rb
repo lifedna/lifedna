@@ -3,11 +3,12 @@ class Community
   include Mongoid::Timestamps
 
   field :name, type: String
+  field :subdomain, type: String
   field :brief, type: String
 
   embeds_one :owner
 
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :subdomain, :presence => true, :uniqueness => true
 
   has_and_belongs_to_many :users
   has_many :sections

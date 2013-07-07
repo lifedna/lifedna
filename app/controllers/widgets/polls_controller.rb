@@ -16,7 +16,7 @@ class Widgets::PollsController < ApplicationController
     @poll = Poll.new(params[:poll])
     if @poll.save
       current_user.publish_activity(:new_poll, :object => @poll, :target_object => @poll_set.community)
-      redirect_to community_section_path(@poll_set.community, @poll_set.section) 
+      redirect_to section_path(@poll_set.section) 
     else  
       render :action => "new"
     end

@@ -6,5 +6,5 @@ jQuery ->
     axis: 'y',
     handle: '.handle',
     update: ->
-      $.post($(this).data('event-url'), $(this).sortable('serialize'))
+      $.post($(this).data('event-url'), $(this).sortable('serialize'))   
 

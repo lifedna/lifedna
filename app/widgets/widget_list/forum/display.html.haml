@@ -3,13 +3,13 @@
   .handle
     = @forum.name
     - if (can? :update, @forum.community) || (can? :participate, @forum.community)
-      = link_to '发言', new_community_forum_topic_path(@forum.community, @forum)
+      = link_to '发言', new_forum_topic_path(@forum)
     - if can? :update, @forum.community
       = link_to 'delete', url_for_event(:delete_widget, :id => @forum.section.id, :widget_id => @forum.id), :confirm => 'Are you sure?', :method => 'delete', :remote => true
       %a{:href => "#", :id => "#{@forum.id}-settings"} settings
 
   .widget-settings{"data-id" => "#{@forum.id}", :style => "width:500px; background:#f4f4ec; padding:20px; margin-bottom:10px;"}
-    = form_for @forum, :url => community_forum_url(@forum.community, @forum)  do |f|
+    = form_for @forum, :url => forum_url(@forum)  do |f|
       %p
         = f.text_field :name
       %p  
