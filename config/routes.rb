@@ -6,7 +6,6 @@ Lifedna::Application.routes.draw do
   resources :blogs do 
     get 'comment', :on => :member
   end  
-
   
   resources :sections
 
@@ -55,9 +54,9 @@ Lifedna::Application.routes.draw do
   devise_for :users
   resources :users
 
-  constraints(Subdomain) do
-    match '/' => 'communities#show'
-  end
+  # constraints(Subdomain) do
+  #   match '/' => 'communities#show'
+  # end
   root :to => "home#index"  
 
 end
